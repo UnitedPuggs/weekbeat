@@ -1,5 +1,22 @@
-import Nav from "@/components/Nav"
+'use client'
+
+import { useSession } from "next-auth/react"
+import { redirect } from "next/navigation"
+
 
 export default function Home() {
-  return <h1>Welcome to WeekBeat!</h1>
+  const { data: session} = useSession()
+
+  return (
+    <>
+      {session?.name ?
+      (
+        redirect("/dashboard")
+      )
+      :
+      (
+        redirect("/login")
+      )}
+    </>
+  )
 }
