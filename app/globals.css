@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .nav-btn {
+    @apply p-2 px-3 font-mono text-lg hover:text-red-600;
+  }
+}
