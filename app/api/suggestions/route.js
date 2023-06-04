@@ -2,12 +2,12 @@ import { supabase } from "@lib/supabase";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
-    const { id, username, vote_bracket, moodnumber } = await req.json();
+    const { id, vote_bracket, username, suggestionClass, suggestionText } = await req.json();
 
     const { data, error } = await supabase
-    .from('votes')
+    .from('suggestions')
     .upsert(
-        { id: id, username: username, vote_bracket: vote_bracket, moodnumber: moodnumber },
+        { id: id, vote_bracket: vote_bracket, username: username, [suggestionClass]: suggestionText }
     )
 
     if(error)

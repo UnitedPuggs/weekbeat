@@ -8,7 +8,7 @@ export default function Login() {
         <div className="flex justify-center items-center h-screen">
             <button
                 type="button"
-                className="bg-black text-white rounded-lg drop-shadow-sm p-2"
+                className="bg-black text-white rounded-lg drop-shadow-sm p-2 hover:opacity-75"
                 onClick={(e) => {
                     e.preventDefault();
                     signIn("google", { callbackUrl: "/dashboard" })
