@@ -2,7 +2,7 @@
 import { useSession } from "next-auth/react"
 
 async function castVote(id, username, voted_on, moodnumber) {
-    fetch("http://localhost:3000/api/vote", {
+    fetch("/api/vote", {
         method: "POST",
         headers: {"Accept": "application/json"},
         body: JSON.stringify({id: id, username: username, voted_on: voted_on, moodnumber: moodnumber})

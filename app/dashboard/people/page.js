@@ -7,7 +7,7 @@ export default function People(){
 
     useEffect(() => {
         const getPeople = async () => {
-            const res = await fetch("http://localhost:3000/api/people")
+            const res = await fetch("/api/people")
             const data = await res.json()
 
             setUsers(data.users)
