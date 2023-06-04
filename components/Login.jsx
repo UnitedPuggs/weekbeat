@@ -9,7 +9,10 @@ export default function Login() {
             <button
                 type="button"
                 className="bg-black text-white rounded-lg drop-shadow-sm p-2"
-                onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+                onClick={(e) => {
+                    e.preventDefault();
+                    signIn("google", { callbackUrl: "/dashboard" })
+                }}
             >
                     Login
             </button>
