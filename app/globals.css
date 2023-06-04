@@ -8,7 +8,7 @@
   }
 
   .vote-btn {
-    @apply py-10 px-12 m-3 font-bold text-3xl transition ease-out duration-300 hover:scale-110 drop-shadow-sm hover:text-white;
+    @apply py-10 px-12 m-3 font-bold text-3xl transition ease-out duration-300 hover:scale-95 drop-shadow-sm hover:text-white;
   }
 
   .cluster-btn {
