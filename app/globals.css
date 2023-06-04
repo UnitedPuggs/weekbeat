@@ -6,4 +6,8 @@
   .nav-btn {
     @apply p-2 px-3 font-mono text-lg hover:text-red-600;
   }
+
+  .vote-btn {
+    @apply py-10 px-12 m-3 font-bold text-3xl transition ease-out duration-300 hover:scale-110 hover:opacity-50 drop-shadow-sm;
+  }
 }

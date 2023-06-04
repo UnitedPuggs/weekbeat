@@ -10,7 +10,5 @@ export async function GET() {
     if(error)
         console.log(error)
 
-    console.log(users)
-
     return NextResponse.json({ users })
 }
