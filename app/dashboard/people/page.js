@@ -1,5 +1,5 @@
 'use client'
-
+//Need to make this into a component and have this file be ssr
 import { useEffect, useState } from "react";
 
 export default function People(){ 

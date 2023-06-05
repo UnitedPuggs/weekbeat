@@ -15,3 +15,14 @@ export async function POST(req) {
 
     return NextResponse.json(data)
 }
+
+export async function GET() { 
+    let { data: votes, error } = await supabase
+    .from('votes')
+    .select('moodnumber')
+
+    if(error)
+        console.log(error)
+    
+    return NextResponse.json(votes)
+}

@@ -1,7 +1,9 @@
+import MoodChart from "@components/MoodChart"
+
 export default function Dashboard() {
     return (
-        <>
-        <h1>Dashboard</h1>
-        </>
+        <div >
+            <MoodChart />
+        </div>
     )
 }
