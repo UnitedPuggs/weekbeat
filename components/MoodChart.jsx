@@ -16,7 +16,7 @@ export default function MoodChart() {
             const data = await res.json()
 
             const dataMap = data.map(votes => votes.moodnumber)
-            const voteAvg = Math.trunc((dataMap.reduce((a, b) => a + b, 0) / data.length) * 10)
+            const voteAvg = Math.trunc((dataMap.reduce((a, b) => a + b, 0) / data.length) * 20)
 
             setAvg(voteAvg)
             setLoading(false)
