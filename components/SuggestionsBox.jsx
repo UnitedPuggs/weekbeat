@@ -1,7 +1,7 @@
 import DispSuggestion from "./DisplayedSuggestion";
 
 export default async function SuggestionsBox({ suggestionType, suggestionTitle }) {
-    const res = await fetch("https://weekbeat.vercel.app/api/suggestions")
+    const res = await fetch("weekbeat-git-main-unitedpuggs.vercel.app/api/suggestions")
     const data = await res.json();
 
     const suggestions = data.suggestions
