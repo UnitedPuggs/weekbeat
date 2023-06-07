@@ -12,11 +12,23 @@ async function castVote(id, username, vote_bracket, moodnumber) {
 
 export default function VoteButton({ style, moodnumber }) {
     const { data: session } = useSession()
-    const [moodnum, setMoodNum] = useState(1)
+    const [moodnum, setMoodNum] = useState(0)
     //Change state in onClick then useEffect on moodnum
+
+    //useEffect(() => {
+    //    
+    //}, [moodnum])
 
     const date = new Date();
     let currentDate = (date.getMonth() + 1) + "-" + date.getDate() + "-" + date.getFullYear();
 
-    return <button className={style} onClick={() => castVote(session.user.email, session.user.name, currentDate, moodnumber )}>{moodnumber}</button>
+    return <button 
+    id={moodnumber}
+    className={style} 
+    onClick={() => {
+        castVote(session.user.email, session.user.name, currentDate, moodnumber)
+        //setMoodNum({moodnumber})
+    }}>
+        {moodnumber}
+    </button>
 }

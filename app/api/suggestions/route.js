@@ -15,3 +15,14 @@ export async function POST(req) {
 
     return NextResponse.json(data)
 }
+
+export async function GET(){ 
+    let { data: suggestions, error } = await supabase
+    .from('suggestions')
+    .select('*')
+
+    if(error)
+        console.log(error)
+
+    return NextResponse.json({ suggestions })
+}
