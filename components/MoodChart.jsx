@@ -12,7 +12,7 @@ export default function MoodChart() {
 
     useEffect(() => {
         const getVotes = async () => {
-            const res = await fetch('api/vote')
+            const res = await fetch('/api/vote')
             const data = await res.json()
 
             const dataMap = data.map(votes => votes.moodnumber)
@@ -24,14 +24,29 @@ export default function MoodChart() {
         getVotes()
     }, [])
 
+    let firstLoopColor = ''
+    
+    if(avg < 25) 
+            firstLoopColor = 'rgb(255, 0, 0)'
+    else if(avg <= 70 && avg >= 25)
+            firstLoopColor = 'rgb(255, 230, 0)'
+    else if(avg > 70)
+        firstLoopColor = 'rgb(0, 250, 154)'
+    else
+            firstLoopColor = 'rgb(233, 233, 233)'
+    
+
+    console.log(firstLoopColor)
+
     const data = {
         datasets: [{
             data: [avg, (100 - avg)],
             backgroundColor: [
-                'rgb(0, 250, 154)',
+                firstLoopColor,
                 'rgb(233, 233, 233)',
             ]
-        }]
+        }],
+        borderWidth: 0,
     };
 
     const options = {
@@ -41,7 +56,7 @@ export default function MoodChart() {
 
     const plugins = [
         {
-            afterDraw(chart) {
+            beforeDraw(chart) {
                 const { width } = chart;
                 const { height } = chart;
                 const { ctx } = chart;
@@ -59,7 +74,7 @@ export default function MoodChart() {
     ]
 
     return (
-        <div className="flex flex-col items-center mt-10 border-2 shadow-sm m-auto w-fit p-5">
+        <div className="flex flex-col items-center mt-10 border-2 shadow-md m-auto w-fit p-5">
             <div>
                 <h1 className="font-bold">Overall Happiness for the Week</h1>
             </div>
