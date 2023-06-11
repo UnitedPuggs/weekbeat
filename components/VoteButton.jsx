@@ -1,6 +1,7 @@
 'use client'
 import { useSession } from "next-auth/react"
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
+import { usePathname, useRouter } from "next/navigation"
 
 async function castVote(id, username, vote_bracket, moodnumber) {
     fetch("/api/vote", {
@@ -10,14 +11,27 @@ async function castVote(id, username, vote_bracket, moodnumber) {
     })
 }
 
-export default function VoteButton({ style, moodnumber }) {
+export default function VoteButton({ style, moodnumber, color }) {
     const { data: session } = useSession()
-    const [moodnum, setMoodNum] = useState(0)
-    //Change state in onClick then useEffect on moodnum
+    const router = useRouter()
+    const path = usePathname()
+    // const [ selectedStyle, setSelectedStyle ] = useState(style)
+     const [ moodnum, setMoodNum ] = useState(0)
 
-    //useEffect(() => {
-    //    
-    //}, [moodnum])
+     useEffect(() => {
+        router.refresh()
+     }, [moodnum])
+    // useEffect(() => {
+    //     const getMood = async () => {
+    //         const res = await fetch(`http://localhost:3000/api/people/votes?id=${session.user.email}`)
+    //         const selected = await res.json()
+            
+    //         if(selected[0].moodnumber == moodnumber)
+    //             setSelectedStyle(`vote-btn text-white bg-${color} border-4 border-${color} rounded-full`)
+    //     }
+
+    //     getMood()
+    // }, [moodnum])
 
     const date = new Date();
     let currentDate = (date.getMonth() + 1) + "-" + date.getDate() + "-" + date.getFullYear();
@@ -27,7 +41,7 @@ export default function VoteButton({ style, moodnumber }) {
     className={style} 
     onClick={() => {
         castVote(session.user.email, session.user.name, currentDate, moodnumber)
-        //setMoodNum({moodnumber})
+        setMoodNum({moodnumber})
     }}>
         {moodnumber}
     </button>
