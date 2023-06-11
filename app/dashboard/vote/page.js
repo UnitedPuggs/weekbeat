@@ -12,8 +12,7 @@ export default async function Vote() {
         })
     ]})
 
-    const res = await fetch(`http://localhost:3000/api/people/votes?id=${session.user.email}`)
-    const selected = await res.json()
+    
 
     return (
         <>
